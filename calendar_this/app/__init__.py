@@ -1,5 +1,5 @@
 from app import routes
-from flask import Flask
+from flask import (Flask, render_template)
 import os
 
 # creates the Flask app, gets the secret key from the environment, and registers the Blueprint. 
