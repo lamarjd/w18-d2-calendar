@@ -6,13 +6,23 @@
 </head>
 
 <body>
-    <h1>Calendar Working</h1>
+    <form method="post" action="/">
+        <p>Name {{ form.name(placeholder="Enter name") }}</p>
+        <p>Start Date {{ form.start_datetime(placeholder="Enter a start date") }}</p>
+        <p>Start Time {{ form.start_datetime_t(placeholder="Enter a start time") }}</p>
+        <p>End Date {{ form.end_datetime(placeholder="Enter end date") }}</p>
+        <p>End Time {{ form.end_datetime_t(placeholder="Enter end time") }}</p>
+        <p>Description {{ form.description(placeholder="What is this appointment for?") }}</p>
+        <p>Private? {{ form.private() }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
     <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Start</th>
-            <th>End</th>
+            <th scope="col">Name</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
           </tr>
         </thead>
         <tbody>
@@ -20,10 +30,10 @@
 
                 <!-- loop here to create rows -->
                 {% for time in rows %}
-                <tr>
+                <div>
                     <!-- use strftime to format date objects -->
-                    <p href="{{ time.href }}">{{ time[1] }} {{ time[2] }} {{ time[3] }}</p>
-                </tr>
+                    <p scope="row" href="{{ time.href }}">{{ time[1] }}     {{ time[2] }}       {{ time[3] }}</p><br/>
+                </div>
                 <!-- loop here to create rows -->
                 {% endfor %}
 
